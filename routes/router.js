@@ -19,7 +19,7 @@ const RegisterMiddleware = require('../middleware/authJWT');
 router.post('/signup',upload.none(),UserController.signup);
 router.post('/signin',upload.none(),UserController.login);
 router.post('/createUser',upload.none(),UserController.create);
-router.get('/getAllUser',UserController.findall);
+router.get('/getAllUser',RegisterMiddleware.isLoggedIn,UserController.findall);
 router.get('/getSingleUser/:id',UserController.findsingle);
 router.delete('/deleteSingleUser/:id',UserController.deleteSingle);
 router.post('/updateSingleUser/:id',upload.none(),UserController.updateSingle);
