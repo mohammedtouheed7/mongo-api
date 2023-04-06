@@ -26,6 +26,9 @@ app.use(express.json())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", (req, res)=>{
+    res.json({message :'Hello From Express Application!'});
+});
 //Create Virtual Server
 var server = app.listen(8087,function(){
     var host = server.address().address;
